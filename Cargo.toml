@@ -2,6 +2,12 @@
 name = "celestia_generators"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "Test purposes for Celestia network incentivized testnet"
+repository = "https://github.com/testnetrunn/test-celestia-generator"
+documentation = "https://github.com/testnetrunn/test-celestia-generator/blob/main/README.md"
+readme = "README.md"
+homepage = "https://github.com/testnetrunn/test-celestia-generator"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
