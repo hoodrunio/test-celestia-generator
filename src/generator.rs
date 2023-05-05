@@ -1,15 +1,20 @@
 use hex::encode;
-use rand::{rngs::ThreadRng, Rng};
+use rand::{Rng, SeedableRng};
+use rand_chacha::ChaCha8Rng;
 
 pub struct PayForBlobGen {
-    pub rand: ThreadRng,
+    pub rand: ChaCha8Rng,
 }
 
 impl PayForBlobGen {
     pub fn new() -> Self {
-        Self {
-            rand: rand::thread_rng(),
-        }
+        PayForBlobGen::from_seed(1000)
+    }
+
+    pub fn from_seed(seed: u64) -> Self {
+        let rand = ChaCha8Rng::seed_from_u64(seed);
+
+        Self { rand }
     }
 
     fn hexer(&self, bytes: &[u8]) -> String {

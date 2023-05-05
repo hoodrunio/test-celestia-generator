@@ -14,3 +14,4 @@ homepage = "https://github.com/testnetrunn/test-celestia-generator"
 [dependencies]
 rand = "0.8.4"
 hex = "0.4.3"
+rand_chacha = "0.3.0"
