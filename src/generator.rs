@@ -1,3 +1,5 @@
+use std::time::SystemTime;
+
 use hex::encode;
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
@@ -12,7 +14,11 @@ impl PayForBlobGen {
     }
 
     pub fn from_seed(seed: u64) -> Self {
-        let rand = ChaCha8Rng::seed_from_u64(seed);
+        let rand_seed = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .expect("System time is before UNIX_EPOCH")
+            .as_nanos() as u64;
+        let rand = ChaCha8Rng::seed_from_u64(seed + rand_seed);
 
         Self { rand }
     }
